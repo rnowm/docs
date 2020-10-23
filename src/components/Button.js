@@ -32,6 +32,7 @@ const ButtonInner = styled.button`
 `;
 
 const ButtonWrapper = styled.div`
+  display: inline-flex;
   &:hover {
     ${ButtonInner} {
       background-color: white;
@@ -39,6 +40,8 @@ const ButtonWrapper = styled.div`
     }
 
     a {
+      width: 100%;
+      height: 100%;
       text-decoration: none;
     }
   }

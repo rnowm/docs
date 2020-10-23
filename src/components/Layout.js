@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, device } from '../utils/variables';
+import { color, device, breakpoint } from '../utils/variables';
 
 const defaultPadding = 20;
 
@@ -13,10 +13,10 @@ export const Common = styled.div`
     position: fixed;
 `};
   display: inline-flex;
-  ${(props) => props.bkg && `background-color: ${color(props.bkg)}`};
+  ${(props) => props.bkg && `background-color: ${color[props.bkg]}`};
   ${(props) =>
     props.border &&
-    `border: ${props.borderSize || 1}px solid ${color(props.border)}`};
+    `border: ${props.borderSize || 1}px solid ${color[props.border]}`};
   ${(props) => props.radius && `border-radius: ${props.radius}px;`};
   ${(props) => props.paddingAll && `padding:${setPadding(props.paddingAll)}px`}
   ${(props) =>
@@ -120,4 +120,10 @@ export const Column = styled(Common)`
   ${(props) => props.center && 'align-items: center'};
   ${(props) => props.right && 'align-items: flex-end'};
   ${(props) => props.stretch && 'width: 100%'};
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  max-width: ${breakpoint.desktop};
+  margin: 0 auto;
 `;

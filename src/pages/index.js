@@ -1,11 +1,15 @@
 import React from 'react';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './styles.module.css';
-import { HeroBanner, HeroImage, HeroText } from '../components/Hero';
-import { Column, Row } from '../components/Layout';
+import {
+  HeroBanner,
+  HeroWrapper,
+  HeroImage,
+  HeroText,
+} from '../components/Hero';
+import { Column, Row, Wrapper } from '../components/Layout';
 import { Button } from '../components/Button';
 
 const features = [
@@ -44,15 +48,13 @@ const features = [
 function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={clsx('col col--4', styles.feature)}>
-      {imgUrl && (
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
-        </div>
-      )}
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </div>
+    <Column paddingAll center>
+      {imgUrl && <img src={imgUrl} alt={title} />}
+      <Column paddingTop="40" center>
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </Column>
+    </Column>
   );
 }
 
@@ -66,36 +68,33 @@ function Home() {
       description="Description will go into a meta tag in <head />"
     >
       <HeroBanner>
-        <HeroImage>
-          <img src="img/undraw_docusaurus_tree.svg" alt="" />
-        </HeroImage>
-        <HeroText>
-          <Column>
+        <HeroWrapper>
+          <HeroImage>
+            <img src="img/undraw_docusaurus_tree.svg" alt="" />
+          </HeroImage>
+          <HeroText>
             <h1>{siteConfig.title}</h1>
-            <Row marginTop>
-              <p>{siteConfig.tagline}</p>
-            </Row>
+            <Row marginBottom />
+            <p>{siteConfig.tagline}</p>
+            <Row marginTop="10" />
             <Button
               transparent
               to={useBaseUrl('docs/')}
               label="¡Más información aquí!"
             ></Button>
-          </Column>
-        </HeroText>
+          </HeroText>
+        </HeroWrapper>
       </HeroBanner>
-      <main>
+
+      <Wrapper>
         {features && features.length > 0 && (
-          <section className={styles.features}>
-            <div className="container">
-              <div className="row">
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
-              </div>
-            </div>
-          </section>
+          <Row paddingAll="40">
+            {features.map((props, idx) => (
+              <Feature key={idx} {...props} />
+            ))}
+          </Row>
         )}
-      </main>
+      </Wrapper>
     </Layout>
   );
 }

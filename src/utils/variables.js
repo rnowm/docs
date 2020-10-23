@@ -37,10 +37,10 @@ export const breakpoint = {
   mobileL: '425px',
   mobileXL: '640px',
   tablet: '768px',
-  tabletL: '900px',
+  tabletL: '995px',
   laptop: '1024px',
   laptopL: '1118px',
-  desktop: '2560px',
+  desktop: '1260px',
 };
 
 export const device = {
